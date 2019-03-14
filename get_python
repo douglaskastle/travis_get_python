@@ -29,7 +29,12 @@ else
     ./configure --prefix=$TRAVIS_BUILD_DIR/local/Python-${PYTHON_REV}
     make
     ls
-    ./python -m venv $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}
+    if [ ${machine} == "Mac" ]; then
+        ./python.exe -m venv $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}
+    else
+        ./python -m venv $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}
+    fi
+    ls $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/bin/
     source $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/bin/activate
     which python
     pip install --upgrade pip yolk3k
