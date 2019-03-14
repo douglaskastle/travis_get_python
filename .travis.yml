@@ -34,11 +34,6 @@ cache:
 #         false
 
 before_install:
-    - if [[ ! -z "${GITHUB_PASSWORD}" ]]; then
-        echo -e "machine github.com\n  login douglaskastle\n  password $GITHUB_PASSWORD" > ~/.netrc ;
-        git submodule init --recursive ;
-        git submodule update --remote ;
-      fi
       source get_python
 #     - mkdir -p ${BLENDER_CACHE}
 #     - ls ${BLENDER_CACHE}
