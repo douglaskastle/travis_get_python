@@ -16,7 +16,7 @@ if [ ${machine} == "MsysNt" ]; then
     echo "It's Windows"
     wget https://www.python.org/ftp/python/${PYTHON_REV}/python-${PYTHON_REV}.post1-embed-amd64.zip
     unzip python-${PYTHON_REV}.post1-embed-amd64.zip
-    #ls *
+    ./python.exe -m ensurepip
     ./python.exe -m venv $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}
     source $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/bin/activate
     ls $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/bin/
