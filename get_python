@@ -15,16 +15,20 @@ mkdir -p $TRAVIS_BUILD_DIR/local
 mkdir -p $TRAVIS_BUILD_DIR/.venv
 if [ ${machine} == "MsysNt" ]; then
     echo "It's Windows"
+    mkdir Python-${PYTHON_REV}
+    cd Python-${PYTHON_REV}
     wget https://www.python.org/ftp/python/${PYTHON_REV}/python-${PYTHON_REV}.post1-embed-amd64.zip
     unzip python-${PYTHON_REV}.post1-embed-amd64.zip
     wget https://bootstrap.pypa.io/get-pip.py
-    ./python.exe get-pip.py
     ls
-    ./pip install virtualenv
-    
-    ./virtualenv -p ./python.exe $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}
-    source $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/bin/activate
-    ls $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/bin/
+    ./python.exe --version
+    ./python.exe get-pip.py
+#     ls
+#     ./pip install virtualenv
+#     
+#     ./virtualenv -p ./python.exe $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}
+#     source $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/bin/activate
+#     ls $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/bin/
     which python
 else
     echo "It other"
