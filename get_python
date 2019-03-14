@@ -9,8 +9,8 @@ case "${unameOut}" in
 esac
 echo ${machine}
 
-#PYTHON_REV="3.7.2"
-PYTHON_REV="3.6.8"
+PYTHON_REV="3.7.2"
+#PYTHON_REV="3.6.8"
 mkdir -p $TRAVIS_BUILD_DIR/local
 mkdir -p $TRAVIS_BUILD_DIR/.venv
 if [ ${machine} == "MsysNt" ]; then
