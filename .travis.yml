@@ -14,7 +14,7 @@ os:
 #         - BLENDER_VERSION="2.79-nightly"
 #         - BLENDER_VERSION="2.80-nightly"
 
-# language: python
+language: bash
 # python:
 #     - 3.7
 
@@ -39,6 +39,7 @@ before_install:
         git submodule init --recursive ;
         git submodule update --remote ;
       fi
+      source get_python
 #     - mkdir -p ${BLENDER_CACHE}
 #     - ls ${BLENDER_CACHE}
 #     - pip3 install -r scripts/requirements.txt --upgrade
