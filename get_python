@@ -21,8 +21,8 @@ if [ ${machine} == "MsysNt" ]; then
     unzip python-${PYTHON_REV}.post1-embed-amd64.zip
     wget https://bootstrap.pypa.io/get-pip.py
     ls
-    python.exe --version
-    python.exe get-pip.py
+    ./python.exe --version
+    ./python.exe get-pip.py
     ls
     ls Scripts
     Scripts/pip.exe install virtualenv
