@@ -8,10 +8,11 @@ case "${unameOut}" in
 esac
 echo ${machine}
 
-if [ ${machine} == "Linux"]; then
-    echo "It Limux"
+PYTHON_REV="3.7.2"
+if [ ${machine} == "MinGw" ]; then
+    echo "It's Windows"
+    wget https://www.python.org/ftp/python/${PYTHON_REV}/python-${PYTHON_REV}.post1-embed-amd64.zip
 else
     echo "It other"
+    wget https://www.python.org/ftp/python/${PYTHON_REV}/Python-${PYTHON_REV}.tgz
 fi
-#wget https://www.python.org/ftp/python/3.7.2/python-3.7.2.post1-embed-amd64.zip
-#https://www.python.org/ftp/python/3.7.2/Python-3.7.2.tgz
