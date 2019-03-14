@@ -1,8 +1,8 @@
 dist: xenial
 
 os:
-    - linux
-    - osx 
+#    - linux
+#    - osx 
     - windows #No python support
 
 # env:
