@@ -19,6 +19,7 @@ if [ ${machine} == "MsysNt" ]; then
     #ls *
     ./python.exe -m venv $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}
     source $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/bin/activate
+    ls $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/bin/
     which python
 else
     echo "It other"
