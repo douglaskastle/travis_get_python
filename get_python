@@ -27,6 +27,7 @@ else
     cd Python-${PYTHON_REV}
     ./configure --prefix=$TRAVIS_BUILD_DIR/local/Python-${PYTHON_REV}
     make
+    ls
     ./python -m venv $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}
     source $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/bin/activate
     which python
