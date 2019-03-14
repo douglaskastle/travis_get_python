@@ -24,7 +24,8 @@ if [ ${machine} == "MsysNt" ]; then
     ./python.exe --version
     ./python.exe get-pip.py
     ls
-    ./pip.exe install virtualenv
+    ls Scripts
+    ./Scripts/pip.exe install virtualenv
     ls
 #     ./pip install virtualenv
 #     
