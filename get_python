@@ -10,15 +10,18 @@ esac
 echo ${machine}
 
 PYTHON_REV="3.7.2"
+mkdir -p $TRAVIS_BUILD_DIR/local
+mkdir -p $TRAVIS_BUILD_DIR/.venv
 if [ ${machine} == "MsysNt" ]; then
     echo "It's Windows"
     wget https://www.python.org/ftp/python/${PYTHON_REV}/python-${PYTHON_REV}.post1-embed-amd64.zip
     unzip python-${PYTHON_REV}.post1-embed-amd64.zip
-    ls *
+    #ls *
+    ./python.exe -m venv $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}
+    source $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/bin/activate
+    which python
 else
     echo "It other"
-    mkdir -p $TRAVIS_BUILD_DIR/local
-    mkdir -p $TRAVIS_BUILD_DIR/.venv
     wget https://www.python.org/ftp/python/${PYTHON_REV}/Python-${PYTHON_REV}.tgz
     tar -zxvf Python-${PYTHON_REV}.tgz
     cd Python-${PYTHON_REV}
@@ -26,4 +29,7 @@ else
     make
     ./python -m venv $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}
     source $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/bin/activate
+    which python
+    pip install --upgrade pip yolk3k
+    yolk -l
 fi
