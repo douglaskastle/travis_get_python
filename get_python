@@ -4,15 +4,21 @@ case "${unameOut}" in
     Darwin*)    machine=Mac;;
     CYGWIN*)    machine=Cygwin;;
     MINGW*)     machine=MinGw;;
+    MSYS_NT*)   machine=MsysNt;;
     *)          machine="UNKNOWN:${unameOut}"
 esac
 echo ${machine}
 
 PYTHON_REV="3.7.2"
-if [ ${machine} == "MinGw" ]; then
+if [ ${machine} == "MsysNt" ]; then
     echo "It's Windows"
     wget https://www.python.org/ftp/python/${PYTHON_REV}/python-${PYTHON_REV}.post1-embed-amd64.zip
+    unzip python-${PYTHON_REV}.post1-embed-amd64.zip
 else
     echo "It other"
     wget https://www.python.org/ftp/python/${PYTHON_REV}/Python-${PYTHON_REV}.tgz
+    tar -zxvf Python-${PYTHON_REV}.tgz
+    cd Python-${PYTHON_REV}
+    ./configure --prefix=/tmp/local/Python-${PYTHON_REV}
+    make
 fi
