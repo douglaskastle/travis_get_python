@@ -23,7 +23,9 @@ if [ ${machine} == "MsysNt" ]; then
     ls
     ./python.exe --version
     ./python.exe get-pip.py
-#     ls
+    ls
+    ./pip.exe install virtualenv
+    ls
 #     ./pip install virtualenv
 #     
 #     ./virtualenv -p ./python.exe $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}
