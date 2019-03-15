@@ -24,14 +24,16 @@ if [ ${machine} == "MsysNt" ]; then
     ls
     ./python.exe --version
     ./python.exe get-pip.py
+    ./python.exe -m pip install --upgrade pip
+    ./python.exe -m pip install --upgrade virtualenv
 #    ls
-    ls Scripts
+    #ls Scripts
     #set PATH=$TRAVIS_BUILD_DIR\Python-${PYTHON_REV}\Scripts;%PATH%
     #pip.exe install virtualenv
-    cd Scripts
-    ./pip.exe install virtualenv
-    echo "ls Scripts"
-    ls
+   # cd Scripts
+    #./pip.exe install virtualenv
+    #echo "ls Scripts"
+    #ls
 #     ./pip install virtualenv
 #     
 #     ./virtualenv -p ./python.exe $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}
