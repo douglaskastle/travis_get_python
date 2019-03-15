@@ -29,9 +29,9 @@ if [ ${machine} == "MsysNt" ]; then
     #set PATH=$TRAVIS_BUILD_DIR\Python-${PYTHON_REV}\Scripts;%PATH%
     #pip.exe install virtualenv
     cd Scripts
-    pip.exe install virtualenv
+    ./pip.exe install virtualenv
     echo "ls Scripts"
-    ls Scripts
+    ls
 #     ./pip install virtualenv
 #     
 #     ./virtualenv -p ./python.exe $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}
