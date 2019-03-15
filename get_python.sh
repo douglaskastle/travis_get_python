@@ -15,6 +15,7 @@ mkdir -p $TRAVIS_BUILD_DIR/local
 mkdir -p $TRAVIS_BUILD_DIR/.venv
 if [ ${machine} == "MsysNt" ]; then
     echo "It's Windows"
+    cd $TRAVIS_BUILD_DIR
     mkdir Python-${PYTHON_REV}
     cd Python-${PYTHON_REV}
     wget https://www.python.org/ftp/python/${PYTHON_REV}/python-${PYTHON_REV}.post1-embed-amd64.zip
@@ -25,7 +26,8 @@ if [ ${machine} == "MsysNt" ]; then
     ./python.exe get-pip.py
 #    ls
     ls Scripts
-    Scripts/pip.exe install virtualenv
+    set PATH=$TRAVIS_BUILD_DIR\Python-${PYTHON_REV}\Scripts;%PATH%
+    pip.exe install virtualenv
     echo "ls Scripts"
     ls Scripts
 #     ./pip install virtualenv
