@@ -45,8 +45,8 @@ if [ ${machine} == "MsysNt" ]; then
     $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/Scripts/activate
     which python
     python --version
-    pip install yolk3k
-    yolk -l
+    $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/Scripts/pip install yolk3k
+    $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/Scripts/yolk -l
     
 #     ./pip install virtualenv
 #     
