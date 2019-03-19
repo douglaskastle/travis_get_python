@@ -35,8 +35,8 @@ else
     git clone https://github.com/openssl/openssl.git
     cd openssl
     ./config --prefix=$TRAVIS_BUILD_DIR/local/openssl --openssldir=$TRAVIS_BUILD_DIR/local/openssl
-    make
-    make install
+    make > logfile 2>&1
+    make install >> logfile 2>&1
     cd $TRAVIS_BUILD_DIR
     wget https://www.python.org/ftp/python/${PYTHON_REV}/Python-${PYTHON_REV}.tgz
     tar -zxvf Python-${PYTHON_REV}.tgz
