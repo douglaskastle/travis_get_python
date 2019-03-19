@@ -27,7 +27,7 @@ if [ ${machine} == "MsysNt" ]; then
     wget https://bootstrap.pypa.io/get-pip.py
     #ls
     #./python.exe --version
-    C:\\Python37\\python get-pip.py
+    C:\\Python37\\python -m ensurepip
     C:\\Python37\\python -m pip install --upgrade pip
     C:\\Python37\\python -m pip install --upgrade virtualenv
 #    ls
@@ -45,8 +45,8 @@ if [ ${machine} == "MsysNt" ]; then
     $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/Scripts/activate
     which python
     python --version
-    $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/Scripts/pip install yolk3k
-    $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/Scripts/yolk -l
+    $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/Scripts/python -m pip install yolk3k
+    $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/Scripts/python -m yolk -l
     
 #     ./pip install virtualenv
 #     
