@@ -39,7 +39,7 @@ if [ ${machine} == "MsysNt" ]; then
     #echo "ls Scripts"
     #ls
     ls C:\\Python37\\Scripts
-    C:\\Python37\\Scripts\\virtualenv -p C:\\Python37\\python $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}
+    C:\\Python37\\Scripts\\virtualenv -p C:\\Python37\\python.exe $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}
     ls $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/bin
     
 #     ./pip install virtualenv
