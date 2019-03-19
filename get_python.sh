@@ -18,14 +18,16 @@ if [ ${machine} == "MsysNt" ]; then
     cd $TRAVIS_BUILD_DIR
     mkdir Python-${PYTHON_REV}
     cd Python-${PYTHON_REV}
-    wget https://www.python.org/ftp/python/${PYTHON_REV}/python-${PYTHON_REV}.post1-embed-amd64.zip
-    unzip python-${PYTHON_REV}.post1-embed-amd64.zip
-    wget https://bootstrap.pypa.io/get-pip.py
-    ls
-    ./python.exe --version
-    ./python.exe get-pip.py
-    ./python.exe -m pip install --upgrade pip
-    ./python.exe -m pip install --upgrade virtualenv
+    choco install python
+    python --version
+    #wget https://www.python.org/ftp/python/${PYTHON_REV}/python-${PYTHON_REV}.post1-embed-amd64.zip
+    #unzip python-${PYTHON_REV}.post1-embed-amd64.zip
+    #wget https://bootstrap.pypa.io/get-pip.py
+    #ls
+    #./python.exe --version
+    #./python.exe get-pip.py
+    #./python.exe -m pip install --upgrade pip
+    #./python.exe -m pip install --upgrade virtualenv
 #    ls
     #ls Scripts
     #set PATH=$TRAVIS_BUILD_DIR\Python-${PYTHON_REV}\Scripts;%PATH%
