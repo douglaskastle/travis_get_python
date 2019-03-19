@@ -23,7 +23,8 @@ if [ ${machine} == "MsysNt" ]; then
     C:\\Python37\\python -m ensurepip
     C:\\Python37\\python -m pip install --upgrade pip virtualenv
 
-    C:\\Python37\\Scripts\\virtualenv -p C:\\Python37\\python.exe $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}
+    #C:\\Python37\\Scripts\\virtualenv -p C:\\Python37\\python.exe $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}
+    C:\\Python37\\python -m venv $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}
     #$TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/Scripts/python --version
     #ls $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/Scripts
     #$TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/Scripts/activate
