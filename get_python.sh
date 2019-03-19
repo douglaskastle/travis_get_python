@@ -27,9 +27,9 @@ if [ ${machine} == "MsysNt" ]; then
     wget https://bootstrap.pypa.io/get-pip.py
     #ls
     #./python.exe --version
-    python.exe get-pip.py
-    python.exe -m pip install --upgrade pip
-    python.exe -m pip install --upgrade virtualenv
+    python get-pip.py
+    python -m pip install --upgrade pip
+    python -m pip install --upgrade virtualenv
 #    ls
     #ls Scripts
     #set PATH=$TRAVIS_BUILD_DIR\Python-${PYTHON_REV}\Scripts;%PATH%
