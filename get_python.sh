@@ -20,10 +20,10 @@ if [ ${machine} == "MsysNt" ]; then
     #cd Python-${PYTHON_REV}
     choco install python --version ${PYTHON_REV}
     py -m venv $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}
-    $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/Scripts/python -m pip install pip yolk3k --upgrade
-    $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/Scripts/python -m yolk -l
-    
     source $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/Scripts/activate
+    python -m pip install pip yolk3k --upgrade
+    python -m yolk -l
+    
     which python
     python --version
 else
