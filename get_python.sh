@@ -42,6 +42,10 @@ if [ ${machine} == "MsysNt" ]; then
     C:\\Python37\\Scripts\\virtualenv -p C:\\Python37\\python.exe $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}
     ls $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/Scripts
     $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/Scripts/activate.bat
+    which python
+    python --version
+    pip install yolk3k
+    yolk -l
     
 #     ./pip install virtualenv
 #     
