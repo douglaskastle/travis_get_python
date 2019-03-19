@@ -23,7 +23,7 @@ if [ ${machine} == "MsysNt" ]; then
     $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/Scripts/python -m pip install pip yolk3k --upgrade
     $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/Scripts/python -m yolk -l
     
-    source $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/bin/activate
+    source $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/Scripts/activate
     which python
     python --version
 else
