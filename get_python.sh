@@ -16,31 +16,16 @@ mkdir -p $TRAVIS_BUILD_DIR/.venv
 if [ ${machine} == "MsysNt" ]; then
     echo "It's Windows"
     cd $TRAVIS_BUILD_DIR
-    mkdir Python-${PYTHON_REV}
-    cd Python-${PYTHON_REV}
+    #mkdir Python-${PYTHON_REV}
+    #cd Python-${PYTHON_REV}
     choco install python --version ${PYTHON_REV}
-    #C:\\Python37\\python --version
-    #C:\\Python37\\python -m ensurepip
-    #C:\\Python37\\python -m pip install --upgrade pip
-
-    #C:\\Python37\\Scripts\\virtualenv -p C:\\Python37\\python.exe $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}
-    C:\\Python37\\python -m venv $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}
-    #$TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/Scripts/python --version
-    #ls $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/Scripts
-    #$TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/Scripts/activate
-    #which python
-    #python --version
+    py -m venv $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}
     $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/Scripts/python -m pip install pip yolk3k --upgrade
     $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/Scripts/python -m yolk -l
     
-    py --version
-    
-#     ./pip install virtualenv
-#     
-#     ./virtualenv -p ./python.exe $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}
-#     source $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/bin/activate
-#     ls $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/bin/
-    #which python
+    source $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/bin/activate
+    which python
+    python --version
 else
     echo "It other"
     cd $TRAVIS_BUILD_DIR
