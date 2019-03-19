@@ -41,7 +41,7 @@ if [ ${machine} == "MsysNt" ]; then
     ls C:\\Python37\\Scripts
     C:\\Python37\\Scripts\\virtualenv -p C:\\Python37\\python.exe $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}
     ls $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/Scripts
-    $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/Scripts/activate.bat
+    $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/Scripts/activate
     which python
     python --version
     pip install yolk3k
