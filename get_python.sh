@@ -19,34 +19,20 @@ if [ ${machine} == "MsysNt" ]; then
     mkdir Python-${PYTHON_REV}
     cd Python-${PYTHON_REV}
     choco install python --version ${PYTHON_REV}
-    #refreshenv
-    #python --version
     C:\\Python37\\python --version
-    #wget https://www.python.org/ftp/python/${PYTHON_REV}/python-${PYTHON_REV}.post1-embed-amd64.zip
-    #unzip python-${PYTHON_REV}.post1-embed-amd64.zip
-    wget https://bootstrap.pypa.io/get-pip.py
-    #ls
-    #./python.exe --version
     C:\\Python37\\python -m ensurepip
-    C:\\Python37\\python -m pip install --upgrade pip
-    C:\\Python37\\python -m pip install --upgrade virtualenv
-#    ls
-    #ls Scripts
-    #set PATH=$TRAVIS_BUILD_DIR\Python-${PYTHON_REV}\Scripts;%PATH%
-    #pip.exe install virtualenv
-   # cd Scripts
-    #./pip.exe install virtualenv
-    #echo "ls Scripts"
-    #ls
-    ls C:\\Python37\\Scripts
+    C:\\Python37\\python -m pip install --upgrade pip virtualenv
+
     C:\\Python37\\Scripts\\virtualenv -p C:\\Python37\\python.exe $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}
-    $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/Scripts/python --version
-    ls $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/Scripts
-    $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/Scripts/activate
-    which python
-    python --version
+    #$TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/Scripts/python --version
+    #ls $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/Scripts
+    #$TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/Scripts/activate
+    #which python
+    #python --version
     $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/Scripts/python -m pip install yolk3k
     $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/Scripts/python -m yolk -l
+    
+    py
     
 #     ./pip install virtualenv
 #     
