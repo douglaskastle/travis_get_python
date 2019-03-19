@@ -1,9 +1,9 @@
 dist: xenial
 
 os:
-#    - linux
-#    - osx 
-    - windows #No python support
+    - linux
+    - osx 
+    - windows
 
 # env:
 #     global:
@@ -42,6 +42,8 @@ before_install:
 
 install:
     - pwd
+    - python --version
+    - which python
 #     - cd $TRAVIS_BUILD_DIR
 #     - python3 --version
 #     - python3 scripts/get_blender.py ${BLENDER_VERSION}
