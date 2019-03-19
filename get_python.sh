@@ -19,6 +19,7 @@ if [ ${machine} == "MsysNt" ]; then
     mkdir Python-${PYTHON_REV}
     cd Python-${PYTHON_REV}
     choco install python
+    refreshenv
     python --version
     #wget https://www.python.org/ftp/python/${PYTHON_REV}/python-${PYTHON_REV}.post1-embed-amd64.zip
     #unzip python-${PYTHON_REV}.post1-embed-amd64.zip
