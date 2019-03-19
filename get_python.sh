@@ -29,10 +29,13 @@ if [ ${machine} == "MsysNt" ]; then
 else
     echo "It other"
     cd $TRAVIS_BUILD_DIR
-    git clone https://github.com/openssl/openssl.git
-    cd openssl
-    ./config --prefix=$TRAVIS_BUILD_DIR/local/ssl --openssldir=$TRAVIS_BUILD_DIR/local/ssl
-    make
+    if [ ${machine} == "Mac" ]; then
+        brew update ; brew upgrade openssl
+    fi
+    #git clone https://github.com/openssl/openssl.git
+    #cd openssl
+    #./config --prefix=$TRAVIS_BUILD_DIR/local/ssl --openssldir=$TRAVIS_BUILD_DIR/local/ssl
+    #make
     cd $TRAVIS_BUILD_DIR
     wget https://www.python.org/ftp/python/${PYTHON_REV}/Python-${PYTHON_REV}.tgz
     tar -zxvf Python-${PYTHON_REV}.tgz
