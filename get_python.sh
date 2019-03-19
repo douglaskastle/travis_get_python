@@ -20,16 +20,16 @@ if [ ${machine} == "MsysNt" ]; then
     cd Python-${PYTHON_REV}
     choco install python --version ${PYTHON_REV}
     #refreshenv
-    python --version
+    #python --version
     C:\\Python37\\python --version
     #wget https://www.python.org/ftp/python/${PYTHON_REV}/python-${PYTHON_REV}.post1-embed-amd64.zip
     #unzip python-${PYTHON_REV}.post1-embed-amd64.zip
     wget https://bootstrap.pypa.io/get-pip.py
     #ls
     #./python.exe --version
-    python get-pip.py
-    python -m pip install --upgrade pip
-    python -m pip install --upgrade virtualenv
+    C:\\Python37\\python get-pip.py
+    C:\\Python37\\python -m pip install --upgrade pip
+    C:\\Python37\\python -m pip install --upgrade virtualenv
 #    ls
     #ls Scripts
     #set PATH=$TRAVIS_BUILD_DIR\Python-${PYTHON_REV}\Scripts;%PATH%
