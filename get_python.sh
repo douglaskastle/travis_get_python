@@ -18,9 +18,10 @@ if [ ${machine} == "MsysNt" ]; then
     cd $TRAVIS_BUILD_DIR
     mkdir Python-${PYTHON_REV}
     cd Python-${PYTHON_REV}
-    choco install python
-    refreshenv
+    choco install python --version ${PYTHON_REV}
+    #refreshenv
     python --version
+    C:\Python37\python --version
     #wget https://www.python.org/ftp/python/${PYTHON_REV}/python-${PYTHON_REV}.post1-embed-amd64.zip
     #unzip python-${PYTHON_REV}.post1-embed-amd64.zip
     wget https://bootstrap.pypa.io/get-pip.py
