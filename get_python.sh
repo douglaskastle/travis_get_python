@@ -11,7 +11,7 @@ esac
 
 PYTHON_VENV="${VENV_CACHE}/${machine}/Python-${PYTHON_REV}"
 PYTHON_INSTALL="${VENV_CACHE}/${machine}/local"
-#rm -rf "${VENV_CACHE}/${machine}"
+rm -rf "${VENV_CACHE}/${machine}"
 mkdir -p "${VENV_CACHE}/${machine}"
 ls "${VENV_CACHE}/${machine}"
 
