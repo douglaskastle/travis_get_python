@@ -25,7 +25,9 @@ else
         if [ ${machine} == "Mac" ]; then
             #brew update
             #brew upgrade libssl-dev openssl > logfile 2>&1
-            brew unlink openssl && brew link openssl --force
+            #brew unlink openssl && brew link openssl --force
+            brew uninstall openssl
+            brew install openssl
 #             brew install openssl xz
 #             CPPFLAGS="-I$(brew --prefix openssl)/include" \
 #             LDFLAGS="-L$(brew --prefix openssl)/lib" \
