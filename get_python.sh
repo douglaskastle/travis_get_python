@@ -9,7 +9,8 @@ case "${unameOut}" in
 esac
 echo ${machine}
 
-PYTHON_VENV="${VENV_CACHE}/Python-${PYTHON_REV}"
+PYTHON_VENV="${VENV_CACHE}/${machine}/Python-${PYTHON_REV}"
+mkdir -p "${VENV_CACHE}/${machine}"
 
 echo $PYTHON_VENV
 ls $PYTHON_VENV
