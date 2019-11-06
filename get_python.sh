@@ -40,6 +40,7 @@ else
         tar -zxvf Python-${PYTHON_REV}.tgz > logfile 2>&1
         cd Python-${PYTHON_REV}
         if [ ${machine} == "Mac" ]; then
+            which python
 #             ./configure > logfile 2>&1
 #             make > logfile 2>&1
 #             ./python.exe -m venv --copies ${PYTHON_VENV}
