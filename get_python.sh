@@ -28,20 +28,22 @@ if [ ${machine} == "MsysNt" ]; then
     python --version
 else
     echo "It other"
+    sudo apt-get install libssl-dev openssl
     cd $TRAVIS_BUILD_DIR
     #if [ ${machine} == "Mac" ]; then
     #    brew update ; brew upgrade openssl
     #fi
-    git clone https://github.com/openssl/openssl.git
-    cd openssl
-    ./config --prefix=$TRAVIS_BUILD_DIR/local/openssl --openssldir=$TRAVIS_BUILD_DIR/local/openssl
-    make > logfile 2>&1
-    make install >> logfile 2>&1
+#     git clone https://github.com/openssl/openssl.git
+#     cd openssl
+#     ./config --prefix=$TRAVIS_BUILD_DIR/local/openssl --openssldir=$TRAVIS_BUILD_DIR/local/openssl
+#     make > logfile 2>&1
+#     make install >> logfile 2>&1
     cd $TRAVIS_BUILD_DIR
     wget https://www.python.org/ftp/python/${PYTHON_REV}/Python-${PYTHON_REV}.tgz
     tar -zxvf Python-${PYTHON_REV}.tgz
     cd Python-${PYTHON_REV}
-    ./configure --prefix=$TRAVIS_BUILD_DIR/local/Python-${PYTHON_REV} --with-openssl=$TRAVIS_BUILD_DIR/local/openssl
+    #./configure --prefix=$TRAVIS_BUILD_DIR/local/Python-${PYTHON_REV} --with-openssl=$TRAVIS_BUILD_DIR/local/openssl
+    ./configure --prefix=$TRAVIS_BUILD_DIR/local/Python-${PYTHON_REV}
     make
     ls
     if [ ${machine} == "Mac" ]; then

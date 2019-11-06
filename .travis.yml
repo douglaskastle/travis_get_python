@@ -2,7 +2,7 @@ dist: xenial
 
 os:
     - linux
-    - osx 
+#    - osx 
     - windows
 
 # env:
@@ -14,9 +14,9 @@ os:
 #         - BLENDER_VERSION="2.79-nightly"
 #         - BLENDER_VERSION="2.80-nightly"
 
-language: python
-python:
-    - 3.6
+language: bash
+# python:
+#     - 3.6
 
 cache:
     apt: true
@@ -34,7 +34,7 @@ cache:
 #         false
 
 before_install:
-#      source get_python.sh
+      source get_python.sh
 #     - mkdir -p ${BLENDER_CACHE}
 #     - ls ${BLENDER_CACHE}
 #     - pip3 install -r scripts/requirements.txt --upgrade
