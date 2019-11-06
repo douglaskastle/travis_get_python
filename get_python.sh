@@ -10,13 +10,20 @@ esac
 echo ${machine}
 
 PYTHON_REV="3.7.4"
-mkdir -p $TRAVIS_BUILD_DIR/local
+#mkdir -p $TRAVIS_BUILD_DIR/local
+PYTHON_VENV=$VENV_CACHE/Python-${PYTHON_REV}
+
+if [ -d $PYTHON_VENV ]; then
+    echo "True"
+else
+    echo "False"
+fi
+
 if [ ${machine} == "MsysNt" ]; then
     echo "It's Windows"
     cd $TRAVIS_BUILD_DIR
     choco install python --version ${PYTHON_REV}
-    py -m venv $VENV_CACHE/Python-${PYTHON_REV}
-    source $VENV_CACHE/Python-${PYTHON_REV}/Scripts/activate
+    py -m venv ${PYTHON_VENV}
 else
     echo "It's other"
     if [ ${machine} == "Mac" ]; then
@@ -32,12 +39,18 @@ else
     make
     #ls
     if [ ${machine} == "Mac" ]; then
-        ./python.exe -m venv $VENV_CACHE/Python-${PYTHON_REV}
+        ./python.exe -m venv ${PYTHON_VENV}
     else
-        ./python -m venv $VENV_CACHE/Python-${PYTHON_REV}
+        ./python -m venv ${PYTHON_VENV}
     fi
-    source $VENV_CACHE/Python-${PYTHON_REV}/bin/activate
 fi
+
+if [ ${machine} == "MsysNt" ]; then
+    source ${PYTHON_VENV}/Scripts/activate
+else
+    source ${PYTHON_VENV}/bin/activate
+fi
+
 python -m pip install pip yolk3k --upgrade
 python -m yolk -l
 which python
