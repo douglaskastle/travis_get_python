@@ -28,7 +28,11 @@ else
         if [ ${machine} == "Mac" ]; then
             #brew update
             #brew upgrade libssl-dev openssl > logfile 2>&1
-            brew unlink openssl && brew link openssl --force
+            #brew unlink openssl && brew link openssl --force
+            brew install openssl xz
+            CPPFLAGS="-I$(brew --prefix openssl)/include" \
+            LDFLAGS="-L$(brew --prefix openssl)/lib" \
+            pythonz install ${PYTHON_VENV}
         else
             sudo apt-get install libssl-dev openssl
         fi
@@ -36,9 +40,9 @@ else
         tar -zxvf Python-${PYTHON_REV}.tgz > logfile 2>&1
         cd Python-${PYTHON_REV}
         if [ ${machine} == "Mac" ]; then
-            ./configure > logfile 2>&1
-            make > logfile 2>&1
-            ./python.exe -m venv --copies ${PYTHON_VENV}
+#             ./configure > logfile 2>&1
+#             make > logfile 2>&1
+#             ./python.exe -m venv --copies ${PYTHON_VENV}
 #             source ${PYTHON_VENV}/bin/activate
 #             pip install pip yolk3k --upgrade
 #             yolk -l
