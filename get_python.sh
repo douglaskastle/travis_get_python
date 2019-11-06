@@ -61,7 +61,7 @@ python -m pip install pip yolk3k --upgrade
 python -m yolk -l
 export PYTHON_RET=`which python`
 echo ${PYTHON_RET}
-if [ ${PYTHON_RET} != "Python ${PYTHON_REV}" ]; then
-    exit 1
-fi
+# if [ ${PYTHON_RET} != "Python ${PYTHON_REV}" ]; then
+#     exit 1
+# fi
 #ls $VENV_CACHE
