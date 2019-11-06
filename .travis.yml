@@ -1,17 +1,17 @@
 dist: xenial
 
 os:
-    #- linux
-    - osx 
-    #- windows
+    - linux
+    #- osx 
+    - windows
 
 env:
     global:
         - VENV_CACHE=$HOME/.cache/venv
     matrix:
-#        - PYTHON_REV=3.8.0
+        - PYTHON_REV=3.8.0
         - PYTHON_REV=3.7.4
-#        - PYTHON_REV=3.6.8
+        - PYTHON_REV=3.6.8
 
 language: bash
 

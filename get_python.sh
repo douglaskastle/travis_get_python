@@ -52,7 +52,7 @@ python -m pip install pip yolk3k --upgrade
 python -m yolk -l
 which python
 export PYTHON_RET=`python --version`
-if [ ${PYTHON_RET} != "Python ${PYTHON_REV}" ]; then
+if [ "${PYTHON_RET}" != "Python ${PYTHON_REV}" ]; then
     echo "Wrong Python rev returned!"
     echo " ${PYTHON_RET} != Python ${PYTHON_REV}"
     exit 1
