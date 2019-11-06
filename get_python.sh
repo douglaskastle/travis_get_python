@@ -9,7 +9,7 @@ case "${unameOut}" in
 esac
 echo ${machine}
 
-PYTHON_REV="3.7.2"
+PYTHON_REV="3.7.4"
 #PYTHON_REV="3.6.8"
 mkdir -p $TRAVIS_BUILD_DIR/local
 mkdir -p $TRAVIS_BUILD_DIR/.venv
@@ -28,11 +28,12 @@ if [ ${machine} == "MsysNt" ]; then
     python --version
 else
     echo "It other"
-    sudo apt-get install libssl-dev openssl
+    if [ ${machine} == "Mac" ]; then
+        brew update ; brew upgrade openssl
+    else
+        sudo apt-get install libssl-dev openssl
+    fi
     cd $TRAVIS_BUILD_DIR
-    #if [ ${machine} == "Mac" ]; then
-    #    brew update ; brew upgrade openssl
-    #fi
 #     git clone https://github.com/openssl/openssl.git
 #     cd openssl
 #     ./config --prefix=$TRAVIS_BUILD_DIR/local/openssl --openssldir=$TRAVIS_BUILD_DIR/local/openssl
