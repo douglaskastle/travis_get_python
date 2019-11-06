@@ -2,17 +2,16 @@ dist: xenial
 
 os:
     - linux
-    - osx 
+    #- osx 
     - windows
 
 env:
     global:
         - VENV_CACHE=$HOME/.cache/venv
     matrix:
+        - PYTHON_REV=3.8.0
         - PYTHON_REV=3.7.4
-#        - PYTHON_REV=3.6.8
-#         - BLENDER_VERSION="2.79-nightly"
-#         - BLENDER_VERSION="2.80-nightly"
+        - PYTHON_REV=3.6.8
 
 language: bash
 # python:
