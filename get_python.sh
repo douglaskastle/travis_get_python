@@ -14,7 +14,7 @@ mkdir -p "${VENV_CACHE}/${machine}"
 
 echo $PYTHON_VENV
 ls $PYTHON_VENV
-if [ !-d "${PYTHON_VENV}" ]; then
+if [ ! -d "${PYTHON_VENV}" ]; then
     echo "False"
     cd $TRAVIS_BUILD_DIR
     if [ ${machine} == "MsysNt" ]; then
