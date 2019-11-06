@@ -2,15 +2,15 @@ dist: xenial
 
 os:
     - linux
-    - osx 
+#    - osx 
     - windows
 
 env:
     global:
         - VENV_CACHE=$HOME/.cache/venv
     matrix:
-        - PYTHON_REV=3.4.8
-        - PYTHON_REV=3.5.7
+#         - PYTHON_REV=3.4.8
+#         - PYTHON_REV=3.5.7
         - PYTHON_REV=3.6.8
         - PYTHON_REV=3.7.5
         - PYTHON_REV=3.8.0
