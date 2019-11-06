@@ -49,8 +49,9 @@ else
     source ${PYTHON_VENV}/bin/activate
 fi
 
-python -m pip install pip yolk3k --upgrade
-python -m yolk -l
+#which pip
+pip install pip yolk3k --upgrade
+yolk -l
 which python
 export PYTHON_RET=`python --version`
 if [ "${PYTHON_RET}" != "Python ${PYTHON_REV}" ]; then
