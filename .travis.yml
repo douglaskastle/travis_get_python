@@ -14,8 +14,6 @@ env:
         - PYTHON_REV=3.6.8
 
 language: bash
-# python:
-#     - 3.6
 
 cache:
     apt: true
@@ -26,29 +24,12 @@ cache:
 before_install:
       - mkdir -p ${VENV_CACHE}
       - source get_python.sh
-      - ls ${VENV_CACHE}
-#     - mkdir -p ${BLENDER_CACHE}
-#     - ls ${BLENDER_CACHE}
-#     - pip3 install -r scripts/requirements.txt --upgrade
-#     - yolk -l
 
 install:
-    - pwd
-    - python --version
     - which python
-#     - cd $TRAVIS_BUILD_DIR
-#     - python3 --version
-#     - python3 scripts/get_blender.py ${BLENDER_VERSION}
 
 script:
-    - pwd
-#     - cd ${TRAVIS_BUILD_DIR}
-#     - ../blender-${BLENDER_VERSION}/blender --version
-#     - cat tests/lwo_phobos/test_load_lwo_phobos.py
-#     - python3 scripts/run_blender.py ${BLENDER_VERSION}
-
-#after_success:
-#    - codecov -f tests_output/coverage.xml
+    - python --version
 
 notifications:
     email:
