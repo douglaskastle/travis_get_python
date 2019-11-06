@@ -10,7 +10,9 @@ esac
 echo ${machine}
 
 PYTHON_VENV="${VENV_CACHE}/${machine}/Python-${PYTHON_REV}"
+PYTHON_INSTALL="${VENV_CACHE}/${machine}/local"
 mkdir -p "${VENV_CACHE}/${machine}"
+#mkdir -p "${VENV_CACHE}/${machine}"
 ls "${VENV_CACHE}/${machine}"
 
 if [ ${machine} == "MsysNt" ]; then
@@ -32,12 +34,14 @@ else
         tar -zxvf Python-${PYTHON_REV}.tgz > logfile 2>&1
         cd Python-${PYTHON_REV}
         if [ ${machine} == "Mac" ]; then
-            ./configure
+            ./configure --prefix=${PYTHON_INSTALL}/Python-${PYTHON_REV}
             make
+            make altinstall
             ./python.exe -m venv ${PYTHON_VENV}
         else
-            ./configure  > logfile 2>&1
+            ./configure --prefix=${PYTHON_INSTALL}/Python-${PYTHON_REV} > logfile 2>&1
             make  > logfile 2>&1
+            make altinstall
             ./python -m venv ${PYTHON_VENV}
         fi
 #     else
