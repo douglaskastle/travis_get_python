@@ -10,6 +10,8 @@ esac
 
 PYTHON_VENV="${VENV_CACHE}/${machine}/Python-${PYTHON_REV}"
 
+rm -rf  "${VENV_CACHE}/${machine}"
+
 mkdir -p "${VENV_CACHE}/${machine}"
 ls "${VENV_CACHE}/${machine}"
 
@@ -21,7 +23,7 @@ else
         cd $TRAVIS_BUILD_DIR
         if [ ${machine} == "Mac" ]; then
             #brew update
-            brew upgrade openssl
+            brew upgrade libssl-dev openssl
         else
             sudo apt-get install libssl-dev openssl
         fi
