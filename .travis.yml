@@ -35,7 +35,9 @@ cache:
 #         false
 
 before_install:
-      source get_python.sh
+      - mkdir -p ${VENV_CACHE}
+      - source get_python.sh
+      - ls ${VENV_CACHE}
 #     - mkdir -p ${BLENDER_CACHE}
 #     - ls ${BLENDER_CACHE}
 #     - pip3 install -r scripts/requirements.txt --upgrade
