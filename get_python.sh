@@ -12,16 +12,14 @@ echo ${machine}
 PYTHON_VENV="${VENV_CACHE}/${machine}/Python-${PYTHON_REV}"
 mkdir -p "${VENV_CACHE}/${machine}"
 
-# echo $PYTHON_VENV
-# ls $PYTHON_VENV
-if [ ! -d "${PYTHON_VENV}" ]; then
-    echo "False"
-    cd $TRAVIS_BUILD_DIR
-    if [ ${machine} == "MsysNt" ]; then
-        echo "It's Windows"
-        choco install python --version ${PYTHON_REV}
-        py -m venv ${PYTHON_VENV}
-    else
+if [ ${machine} == "MsysNt" ]; then
+    echo "It's Windows"
+    choco install python --version ${PYTHON_REV}
+    py -m venv ${PYTHON_VENV}
+else
+    if [ ! -d "${PYTHON_VENV}" ]; then
+        echo "False"
+        cd $TRAVIS_BUILD_DIR
         echo "It's other"
         if [ ${machine} == "Mac" ]; then
             #brew update
@@ -41,9 +39,9 @@ if [ ! -d "${PYTHON_VENV}" ]; then
             make  > logfile 2>&1
             ./python -m venv ${PYTHON_VENV}
         fi
+    else
+        echo "True"
     fi
-else
-    echo "True"
 fi
 
 if [ ${machine} == "MsysNt" ]; then
