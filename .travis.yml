@@ -7,9 +7,9 @@ os:
 
 env:
     global:
-#        - BLENDER_CACHE=$HOME/.cache/blender
         - VENV_CACHE=$HOME/.cache/venv
         - PYTHON_REV=3.7.4
+#        - BLENDER_CACHE=$HOME/.cache/blender
 #     matrix:
 #         - BLENDER_VERSION="2.78c"
 # #        - BLENDER_VERSION="2.79b"
@@ -22,9 +22,10 @@ language: bash
 
 cache:
     apt: true
-#     directories:
-#         - $HOME/.cache/pip
-#         - ${BLENDER_CACHE}
+    directories:
+        - $HOME/.cache/pip
+        - ${VENV_CACHE}
+#        - ${BLENDER_CACHE}
 # 
 # addons:
 #     apt:
