@@ -37,7 +37,7 @@ if [ ! -d "${PYTHON_VENV}" ]; then
             make
             ./python.exe -m venv ${PYTHON_VENV}
         else
-            ./configure
+            ./configure  > logfile 2>&1
             make  > logfile 2>&1
             ./python -m venv ${PYTHON_VENV}
         fi
@@ -47,8 +47,10 @@ else
 fi
 
 if [ ${machine} == "MsysNt" ]; then
+    ls ${PYTHON_VENV}/Scripts
     source ${PYTHON_VENV}/Scripts/activate
 else
+    ls ${PYTHON_VENV}/activate
     source ${PYTHON_VENV}/bin/activate
 fi
 
