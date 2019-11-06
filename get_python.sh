@@ -45,9 +45,9 @@ if [ ! -d "${PYTHON_VENV}" ]; then
             #${PYTHON_INSTALL}/Python-${PYTHON_REV}/bin/python3 -m venv --copies ${PYTHON_VENV}
             ./python -m venv --copies ${PYTHON_VENV}
         fi
-    else
-        echo "True"
     fi
+else
+    echo "True"
 fi
 
 if [ ${machine} == "MsysNt" ]; then
