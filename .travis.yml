@@ -8,11 +8,9 @@ os:
 env:
     global:
         - VENV_CACHE=$HOME/.cache/venv
+    matrix:
         - PYTHON_REV=3.7.4
-#        - BLENDER_CACHE=$HOME/.cache/blender
-#     matrix:
-#         - BLENDER_VERSION="2.78c"
-# #        - BLENDER_VERSION="2.79b"
+#        - PYTHON_REV=3.6.8
 #         - BLENDER_VERSION="2.79-nightly"
 #         - BLENDER_VERSION="2.80-nightly"
 
@@ -25,16 +23,6 @@ cache:
     directories:
         - $HOME/.cache/pip
         - ${VENV_CACHE}
-#        - ${BLENDER_CACHE}
-# 
-# addons:
-#     apt:
-#         packages:
-#             - blender
-# 
-# git:
-#     submodules:
-#         false
 
 before_install:
       - mkdir -p ${VENV_CACHE}

@@ -15,12 +15,12 @@ PYTHON_INSTALL="${VENV_CACHE}/${machine}/local"
 mkdir -p "${VENV_CACHE}/${machine}"
 ls "${VENV_CACHE}/${machine}"
 
-if [ ! -d "${PYTHON_VENV}" ]; then
-    if [ ${machine} == "MsysNt" ]; then
-        echo "It's Windows"
-        choco install python --version ${PYTHON_REV}
-        py -m venv --copies ${PYTHON_VENV}
-    else
+if [ ${machine} == "MsysNt" ]; then
+    echo "It's Windows"
+    choco install python --version ${PYTHON_REV}
+    py -m venv --copies ${PYTHON_VENV}
+else
+   if [ ! -d "${PYTHON_VENV}" ]; then
         echo "False"
         cd $TRAVIS_BUILD_DIR
         echo "It's other"
@@ -45,9 +45,9 @@ if [ ! -d "${PYTHON_VENV}" ]; then
             #${PYTHON_INSTALL}/Python-${PYTHON_REV}/bin/python3 -m venv --copies ${PYTHON_VENV}
             ./python -m venv --copies ${PYTHON_VENV}
         fi
+    else
+        echo "True"
     fi
-else
-    echo "True"
 fi
 
 if [ ${machine} == "MsysNt" ]; then
