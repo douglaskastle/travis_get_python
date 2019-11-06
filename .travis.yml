@@ -2,12 +2,13 @@ dist: xenial
 
 os:
     - linux
-    - osx 
+#    - osx 
     - windows
 
-# env:
-#     global:
-#         - BLENDER_CACHE=$HOME/.cache/blender
+env:
+    global:
+#        - BLENDER_CACHE=$HOME/.cache/blender
+        - VENV_CACHE=$HOME/.cache/venv
 #     matrix:
 #         - BLENDER_VERSION="2.78c"
 # #        - BLENDER_VERSION="2.79b"

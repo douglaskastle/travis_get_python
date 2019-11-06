@@ -10,40 +10,29 @@ esac
 echo ${machine}
 
 PYTHON_REV="3.7.4"
-#PYTHON_REV="3.6.8"
 mkdir -p $TRAVIS_BUILD_DIR/local
 mkdir -p $TRAVIS_BUILD_DIR/.venv
 if [ ${machine} == "MsysNt" ]; then
     echo "It's Windows"
+    ls $VENV_CACHE
     cd $TRAVIS_BUILD_DIR
-    #mkdir Python-${PYTHON_REV}
-    #cd Python-${PYTHON_REV}
     choco install python --version ${PYTHON_REV}
     py -m venv $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}
     source $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/Scripts/activate
-    python -m pip install pip yolk3k --upgrade
-    python -m yolk -l
-    
-    which python
-    python --version
+    py -m venv $VENV_CACHE/Python-${PYTHON_REV}
+    ls $VENV_CACHE
+    ls $VENV_CACHE/Python-${PYTHON_REV}/Scripts
 else
-    echo "It other"
+    echo "It's other"
     if [ ${machine} == "Mac" ]; then
         brew update ; brew upgrade openssl
     else
         sudo apt-get install libssl-dev openssl
     fi
     cd $TRAVIS_BUILD_DIR
-#     git clone https://github.com/openssl/openssl.git
-#     cd openssl
-#     ./config --prefix=$TRAVIS_BUILD_DIR/local/openssl --openssldir=$TRAVIS_BUILD_DIR/local/openssl
-#     make > logfile 2>&1
-#     make install >> logfile 2>&1
-    cd $TRAVIS_BUILD_DIR
     wget https://www.python.org/ftp/python/${PYTHON_REV}/Python-${PYTHON_REV}.tgz
     tar -zxvf Python-${PYTHON_REV}.tgz
     cd Python-${PYTHON_REV}
-    #./configure --prefix=$TRAVIS_BUILD_DIR/local/Python-${PYTHON_REV} --with-openssl=$TRAVIS_BUILD_DIR/local/openssl
     ./configure --prefix=$TRAVIS_BUILD_DIR/local/Python-${PYTHON_REV}
     make
     ls
@@ -52,9 +41,8 @@ else
     else
         ./python -m venv $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}
     fi
-    ls $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/bin/
     source $TRAVIS_BUILD_DIR/.venv/Python-${PYTHON_REV}/bin/activate
-    which python
-    pip install --upgrade pip yolk3k
-    yolk -l
 fi
+python -m pip install pip yolk3k --upgrade
+python -m yolk -l
+which python
