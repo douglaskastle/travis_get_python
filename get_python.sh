@@ -11,16 +11,16 @@ esac
 
 PYTHON_VENV="${VENV_CACHE}/${machine}/Python-${PYTHON_REV}"
 PYTHON_INSTALL="${VENV_CACHE}/${machine}/local"
-rm -rf "${VENV_CACHE}/${machine}"
+#rm -rf "${VENV_CACHE}/${machine}"
 mkdir -p "${VENV_CACHE}/${machine}"
 ls "${VENV_CACHE}/${machine}"
 
-if [ ${machine} == "MsysNt" ]; then
-    echo "It's Windows"
-    choco install python --version ${PYTHON_REV}
-    py -m venv --copies ${PYTHON_VENV}
-else
-   if [ ! -d "${PYTHON_VENV}" ]; then
+if [ ! -d "${PYTHON_VENV}" ]; then
+    if [ ${machine} == "MsysNt" ]; then
+        echo "It's Windows"
+        choco install python --version ${PYTHON_REV}
+        py -m venv --copies ${PYTHON_VENV}
+    else
         echo "False"
         cd $TRAVIS_BUILD_DIR
         echo "It's other"
@@ -42,7 +42,8 @@ else
             ./configure --prefix=${PYTHON_INSTALL}/Python-${PYTHON_REV} > logfile 2>&1
             make > logfile 2>&1
             make altinstall
-            ${PYTHON_INSTALL}/Python-${PYTHON_REV}/bin/python3 -m venv --copies ${PYTHON_VENV}
+            #${PYTHON_INSTALL}/Python-${PYTHON_REV}/bin/python3 -m venv --copies ${PYTHON_VENV}
+            ./python -m venv --copies ${PYTHON_VENV}
         fi
     else
         echo "True"
@@ -61,10 +62,12 @@ python -m pip install pip yolk3k --upgrade
 python -m yolk -l
 which python
 export PYTHON_RET=`python --version`
-echo ${PYTHON_RET}
 if [ ${PYTHON_RET} != "Python ${PYTHON_REV}" ]; then
     echo "Wrong Python rev returned!"
     echo " ${PYTHON_RET} != Python ${PYTHON_REV}"
     exit 1
+else
+    echo "This is the expected version of Python:"
+    echo ${PYTHON_RET}
 fi
 #ls $VENV_CACHE
