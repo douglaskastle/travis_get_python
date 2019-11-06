@@ -11,13 +11,14 @@ echo ${machine}
 
 PYTHON_VENV="${VENV_CACHE}/${machine}/Python-${PYTHON_REV}"
 PYTHON_INSTALL="${VENV_CACHE}/${machine}/local"
+rm -rf "${VENV_CACHE}/${machine}"
 mkdir -p "${VENV_CACHE}/${machine}"
 ls "${VENV_CACHE}/${machine}"
 
 if [ ${machine} == "MsysNt" ]; then
     echo "It's Windows"
     choco install python --version ${PYTHON_REV}
-    py -m venv ${PYTHON_VENV}
+    py -m venv --copies ${PYTHON_VENV}
 else
    #if [ ! -d "${PYTHON_VENV}" ]; then
         echo "False"
@@ -36,12 +37,12 @@ else
             ./configure --prefix=${PYTHON_INSTALL}/Python-${PYTHON_REV} > logfile 2>&1
             make > logfile 2>&1
             make altinstall > logfile 2>&1
-            ./python.exe -m venv ${PYTHON_VENV}
+            ./python.exe -m venv --copies ${PYTHON_VENV}
         else
             ./configure --prefix=${PYTHON_INSTALL}/Python-${PYTHON_REV} > logfile 2>&1
             make > logfile 2>&1
             make altinstall > logfile 2>&1
-            ${PYTHON_INSTALL}/Python-${PYTHON_REV}/bin/python -m venv ${PYTHON_VENV}
+            ${PYTHON_INSTALL}/Python-${PYTHON_REV}/bin/python -m venv --copies ${PYTHON_VENV}
         fi
 #     else
 #         echo "True"
