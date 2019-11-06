@@ -10,10 +10,9 @@ esac
 echo ${machine}
 
 PYTHON_REV="3.7.4"
-#mkdir -p $TRAVIS_BUILD_DIR/local
 PYTHON_VENV=$VENV_CACHE/Python-${PYTHON_REV}
 
-if [ -d $PYTHON_VENV ]; then
+if [ -d ${PYTHON_VENV} ]; then
     echo "True"
 else
     echo "False"
