@@ -36,12 +36,12 @@ else
         if [ ${machine} == "Mac" ]; then
             ./configure --prefix=${PYTHON_INSTALL}/Python-${PYTHON_REV} > logfile 2>&1
             make > logfile 2>&1
-            make altinstall > logfile 2>&1
+            #make altinstall > logfile 2>&1
             ./python.exe -m venv --copies ${PYTHON_VENV}
         else
             ./configure --prefix=${PYTHON_INSTALL}/Python-${PYTHON_REV} > logfile 2>&1
             make > logfile 2>&1
-            make altinstall
+            #make altinstall
             #${PYTHON_INSTALL}/Python-${PYTHON_REV}/bin/python3 -m venv --copies ${PYTHON_VENV}
             ./python -m venv --copies ${PYTHON_VENV}
         fi
