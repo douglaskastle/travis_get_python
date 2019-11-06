@@ -9,12 +9,12 @@ case "${unameOut}" in
 esac
 echo ${machine}
 
-PYTHON_REV="3.7.4"
+#PYTHON_REV="3.7.4"
 PYTHON_VENV="${VENV_CACHE}/Python-${PYTHON_REV}"
 
 echo $PYTHON_VENV
 ls $PYTHON_VENV
-if [ -d ${PYTHON_VENV} ]; then
+if [ -d "${PYTHON_VENV}" ]; then
     echo "True"
 else
     echo "False"
@@ -28,7 +28,8 @@ if [ ${machine} == "MsysNt" ]; then
 else
     echo "It's other"
     if [ ${machine} == "Mac" ]; then
-        brew update ; brew upgrade openssl
+        #brew update
+        brew upgrade openssl
     else
         sudo apt-get install libssl-dev openssl
     fi
