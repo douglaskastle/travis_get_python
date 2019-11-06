@@ -7,11 +7,11 @@ case "${unameOut}" in
     MSYS_NT*)   machine=MsysNt;;
     *)          machine="UNKNOWN:${unameOut}"
 esac
-echo ${machine}
+#echo ${machine}
 
 PYTHON_VENV="${VENV_CACHE}/${machine}/Python-${PYTHON_REV}"
 PYTHON_INSTALL="${VENV_CACHE}/${machine}/local"
-rm -rf "${VENV_CACHE}/${machine}"
+#rm -rf "${VENV_CACHE}/${machine}"
 mkdir -p "${VENV_CACHE}/${machine}"
 ls "${VENV_CACHE}/${machine}"
 
@@ -20,7 +20,7 @@ if [ ${machine} == "MsysNt" ]; then
     choco install python --version ${PYTHON_REV}
     py -m venv --copies ${PYTHON_VENV}
 else
-   #if [ ! -d "${PYTHON_VENV}" ]; then
+   if [ ! -d "${PYTHON_VENV}" ]; then
         echo "False"
         cd $TRAVIS_BUILD_DIR
         echo "It's other"
@@ -41,12 +41,12 @@ else
         else
             ./configure --prefix=${PYTHON_INSTALL}/Python-${PYTHON_REV} > logfile 2>&1
             make > logfile 2>&1
-            make altinstall > logfile 2>&1
-            ${PYTHON_INSTALL}/Python-${PYTHON_REV}/bin/python -m venv --copies ${PYTHON_VENV}
+            make altinstall
+            ${PYTHON_INSTALL}/Python-${PYTHON_REV}/bin/python3 -m venv --copies ${PYTHON_VENV}
         fi
-#     else
-#         echo "True"
-#     fi
+    else
+        echo "True"
+    fi
 fi
 
 if [ ${machine} == "MsysNt" ]; then
@@ -62,7 +62,9 @@ python -m yolk -l
 which python
 export PYTHON_RET=`python --version`
 echo ${PYTHON_RET}
-# if [ ${PYTHON_RET} != "Python ${PYTHON_REV}" ]; then
-#     exit 1
-# fi
+if [ ${PYTHON_RET} != "Python ${PYTHON_REV}" ]; then
+    echo "Wrong Python rev returned!"
+    echo " ${PYTHON_RET} != Python ${PYTHON_REV}"
+    exit 1
+fi
 #ls $VENV_CACHE
