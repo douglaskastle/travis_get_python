@@ -46,10 +46,10 @@ else
 fi
 
 if [ ${machine} == "MsysNt" ]; then
-    ls ${PYTHON_VENV}
+    ls ${PYTHON_VENV}/Scripts
     source ${PYTHON_VENV}/Scripts/activate
 else
-    ls ${PYTHON_VENV}
+    ls ${PYTHON_VENV}/bin
     source ${PYTHON_VENV}/bin/activate
 fi
 
