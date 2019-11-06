@@ -10,17 +10,19 @@ esac
 echo ${machine}
 
 PYTHON_REV="3.7.4"
-PYTHON_VENV=$VENV_CACHE/Python-${PYTHON_REV}
+PYTHON_VENV="${VENV_CACHE}/Python-${PYTHON_REV}"
 
+echo $PYTHON_VENV
+ls $PYTHON_VENV
 if [ -d ${PYTHON_VENV} ]; then
     echo "True"
 else
     echo "False"
 fi
 
+cd $TRAVIS_BUILD_DIR
 if [ ${machine} == "MsysNt" ]; then
     echo "It's Windows"
-    cd $TRAVIS_BUILD_DIR
     choco install python --version ${PYTHON_REV}
     py -m venv ${PYTHON_VENV}
 else
@@ -30,13 +32,11 @@ else
     else
         sudo apt-get install libssl-dev openssl
     fi
-    cd $TRAVIS_BUILD_DIR
     wget https://www.python.org/ftp/python/${PYTHON_REV}/Python-${PYTHON_REV}.tgz
     tar -zxvf Python-${PYTHON_REV}.tgz
     cd Python-${PYTHON_REV}
     ./configure
     make
-    #ls
     if [ ${machine} == "Mac" ]; then
         ./python.exe -m venv ${PYTHON_VENV}
     else
