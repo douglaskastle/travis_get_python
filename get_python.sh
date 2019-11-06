@@ -20,7 +20,7 @@ if [ ${machine} == "MsysNt" ]; then
     choco install python --version ${PYTHON_REV}
     py -m venv ${PYTHON_VENV}
 else
-#    if [ ! -d "${PYTHON_VENV}" ]; then
+   if [ ! -d "${PYTHON_VENV}" ]; then
         echo "False"
         cd $TRAVIS_BUILD_DIR
         echo "It's other"
@@ -40,13 +40,13 @@ else
             ./python.exe -m venv ${PYTHON_VENV}
         else
             ./configure --prefix=${PYTHON_INSTALL}/Python-${PYTHON_REV} > logfile 2>&1
-            make  > logfile 2>&1
-            make altinstall
-            ./python -m venv ${PYTHON_VENV}
+            make > logfile 2>&1
+            make altinstall > logfile 2>&1
+            ${PYTHON_INSTALL}/Python-${PYTHON_REV}/bin/python -m venv ${PYTHON_VENV}
         fi
-#     else
-#         echo "True"
-#     fi
+    else
+        echo "True"
+    fi
 fi
 
 if [ ${machine} == "MsysNt" ]; then
@@ -59,7 +59,8 @@ fi
 
 python -m pip install pip yolk3k --upgrade
 python -m yolk -l
-export PYTHON_RET=`which python`
+which python
+export PYTHON_RET=`python --version`
 echo ${PYTHON_RET}
 # if [ ${PYTHON_RET} != "Python ${PYTHON_REV}" ]; then
 #     exit 1
