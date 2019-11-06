@@ -36,11 +36,13 @@ else
     wget https://www.python.org/ftp/python/${PYTHON_REV}/Python-${PYTHON_REV}.tgz
     tar -zxvf Python-${PYTHON_REV}.tgz
     cd Python-${PYTHON_REV}
-    ./configure
-    make
     if [ ${machine} == "Mac" ]; then
+        ./configure
+        make
         ./python.exe -m venv ${PYTHON_VENV}
     else
+        ./configure
+        make  > logfile 2>&1
         ./python -m venv ${PYTHON_VENV}
     fi
 fi
