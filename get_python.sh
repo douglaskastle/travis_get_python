@@ -19,20 +19,17 @@ ls "${VENV_CACHE}/${machine}"
 if [ ${machine} == "MsysNt" ]; then
     choco install python --version ${PYTHON_REV}
     py -m venv --copies ${PYTHON_VENV}
-#     source ${PYTHON_VENV}/Scripts/activate
-#     python -m pip install pip yolk3k --upgrade
-#     python -m yolk -l
 else
    if [ ! -d "${PYTHON_VENV}" ]; then
         cd ${VENV_CACHE}/${machine}
         if [ ${machine} == "Mac" ]; then
             #brew update
             #brew upgrade libssl-dev openssl > logfile 2>&1
-            #brew unlink openssl && brew link openssl --force
-            brew install openssl xz
-            CPPFLAGS="-I$(brew --prefix openssl)/include" \
-            LDFLAGS="-L$(brew --prefix openssl)/lib" \
-            pythonz install ${PYTHON_VENV}
+            brew unlink openssl && brew link openssl --force
+#             brew install openssl xz
+#             CPPFLAGS="-I$(brew --prefix openssl)/include" \
+#             LDFLAGS="-L$(brew --prefix openssl)/lib" \
+#             pythonz install ${PYTHON_VENV}
         else
             sudo apt-get install libssl-dev openssl
         fi
@@ -41,19 +38,13 @@ else
         cd Python-${PYTHON_REV}
         if [ ${machine} == "Mac" ]; then
             which python
-#             ./configure > logfile 2>&1
-#             make > logfile 2>&1
-#             ./python.exe -m venv --copies ${PYTHON_VENV}
-#             source ${PYTHON_VENV}/bin/activate
-#             pip install pip yolk3k --upgrade
-#             yolk -l
+            ./configure > logfile 2>&1
+            make > logfile 2>&1
+            ./python.exe -m venv --copies ${PYTHON_VENV}
         else
             ./configure > logfile 2>&1
             make > logfile 2>&1
             ./python -m venv --copies ${PYTHON_VENV}
-#             source ${PYTHON_VENV}/bin/activate
-#             python -m pip install pip yolk3k --upgrade
-#             python -m yolk -l
         fi
     fi
 fi
