@@ -9,42 +9,40 @@ case "${unameOut}" in
 esac
 echo ${machine}
 
-#PYTHON_REV="3.7.4"
 PYTHON_VENV="${VENV_CACHE}/Python-${PYTHON_REV}"
 
 echo $PYTHON_VENV
 ls $PYTHON_VENV
-if [ -d "${PYTHON_VENV}" ]; then
-    echo "True"
-else
+if [ !-d "${PYTHON_VENV}" ]; then
     echo "False"
-fi
-
-cd $TRAVIS_BUILD_DIR
-if [ ${machine} == "MsysNt" ]; then
-    echo "It's Windows"
-    choco install python --version ${PYTHON_REV}
-    py -m venv ${PYTHON_VENV}
+    cd $TRAVIS_BUILD_DIR
+    if [ ${machine} == "MsysNt" ]; then
+        echo "It's Windows"
+        choco install python --version ${PYTHON_REV}
+        py -m venv ${PYTHON_VENV}
+    else
+        echo "It's other"
+        if [ ${machine} == "Mac" ]; then
+            #brew update
+            brew upgrade openssl
+        else
+            sudo apt-get install libssl-dev openssl
+        fi
+        wget https://www.python.org/ftp/python/${PYTHON_REV}/Python-${PYTHON_REV}.tgz
+        tar -zxvf Python-${PYTHON_REV}.tgz
+        cd Python-${PYTHON_REV}
+        if [ ${machine} == "Mac" ]; then
+            ./configure
+            make
+            ./python.exe -m venv ${PYTHON_VENV}
+        else
+            ./configure
+            make  > logfile 2>&1
+            ./python -m venv ${PYTHON_VENV}
+        fi
+    fi
 else
-    echo "It's other"
-    if [ ${machine} == "Mac" ]; then
-        #brew update
-        brew upgrade openssl
-    else
-        sudo apt-get install libssl-dev openssl
-    fi
-    wget https://www.python.org/ftp/python/${PYTHON_REV}/Python-${PYTHON_REV}.tgz
-    tar -zxvf Python-${PYTHON_REV}.tgz
-    cd Python-${PYTHON_REV}
-    if [ ${machine} == "Mac" ]; then
-        ./configure
-        make
-        ./python.exe -m venv ${PYTHON_VENV}
-    else
-        ./configure
-        make  > logfile 2>&1
-        ./python -m venv ${PYTHON_VENV}
-    fi
+    echo "True"
 fi
 
 if [ ${machine} == "MsysNt" ]; then
