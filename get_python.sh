@@ -12,8 +12,8 @@ echo ${machine}
 PYTHON_VENV="${VENV_CACHE}/${machine}/Python-${PYTHON_REV}"
 mkdir -p "${VENV_CACHE}/${machine}"
 
-echo $PYTHON_VENV
-ls $PYTHON_VENV
+# echo $PYTHON_VENV
+# ls $PYTHON_VENV
 if [ ! -d "${PYTHON_VENV}" ]; then
     echo "False"
     cd $TRAVIS_BUILD_DIR
@@ -30,7 +30,7 @@ if [ ! -d "${PYTHON_VENV}" ]; then
             sudo apt-get install libssl-dev openssl
         fi
         wget https://www.python.org/ftp/python/${PYTHON_REV}/Python-${PYTHON_REV}.tgz
-        tar -zxvf Python-${PYTHON_REV}.tgz
+        tar -zxvf Python-${PYTHON_REV}.tgz > logfile 2>&1
         cd Python-${PYTHON_REV}
         if [ ${machine} == "Mac" ]; then
             ./configure
