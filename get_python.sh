@@ -32,7 +32,7 @@ else
                 --openssldir=$TRAVIS_BUILD_DIR/local/openssl \
                     > logfile 2>&1
             make > logfile 2>&1
-            make install
+            make install > logfile 2>&1
             #brew update
             #brew upgrade libssl-dev openssl > logfile 2>&1
             #brew unlink openssl && brew link openssl --force
