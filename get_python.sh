@@ -29,8 +29,8 @@ else
             cd openssl
             ./config \
                 --prefix=$TRAVIS_BUILD_DIR/local/openssl \
-                --openssldir=$TRAVIS_BUILD_DIR/local/openssl
-            make > logfile 2>&1
+                --openssldir=$TRAVIS_BUILD_DIR/local/openssl > logfile 2>&1
+            make
             make install > logfile 2>&1
             #brew update
             #brew upgrade libssl-dev openssl > logfile 2>&1
