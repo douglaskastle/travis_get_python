@@ -29,8 +29,7 @@ else
             cd openssl
             ./config \
                 --prefix=$TRAVIS_BUILD_DIR/local/openssl \
-                --openssldir=$TRAVIS_BUILD_DIR/local/openssl \
-                    > logfile 2>&1
+                --openssldir=$TRAVIS_BUILD_DIR/local/openssl > logfile 2>&1
             make > logfile 2>&1
             make install > logfile 2>&1
             #brew update
@@ -52,6 +51,7 @@ else
         cd Python-${PYTHON_REV}
         if [ ${machine} == "Mac" ]; then
             ./configure \
+                --with-ssl \
                 --with-openssl="$TRAVIS_BUILD_DIR/local"    
             make > logfile 2>&1
             ./python.exe -m venv --copies ${PYTHON_VENV}
