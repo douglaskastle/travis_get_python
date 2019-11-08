@@ -54,6 +54,11 @@ else
 #             ./configure \
 #                 --with-ssl \
 #                 --with-openssl="$TRAVIS_BUILD_DIR/local"    
+            echo $LDFLAGS
+            echo $CPPFLAGS
+            
+            export LDFLAGS="-L/usr/local/opt/openssl/lib"
+            export CPPFLAGS="-I/usr/local/opt/openssl/include"
             ./configure    
             make > logfile 2>&1
             ./python.exe -m venv --copies ${PYTHON_VENV}
