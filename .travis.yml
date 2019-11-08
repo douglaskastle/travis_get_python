@@ -7,7 +7,8 @@ jobs:
         - os: linux
         - os: windows
         - os: osx
-          rvm: 2.63
+          language: ruby
+              rvm: 2.63
 # os:
 #     - linux
 #     - osx 
