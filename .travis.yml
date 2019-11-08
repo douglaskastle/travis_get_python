@@ -1,9 +1,9 @@
 dist: xenial
 
 os:
-    #- linux
+    - linux
     - osx 
-    #- windows
+    - windows
 
 env:
     global:
@@ -12,12 +12,13 @@ env:
 #         - PYTHON_REV=3.4.8
 #         - PYTHON_REV=3.5.7
         - PYTHON_REV=3.6.8
-#         - PYTHON_REV=3.7.5
-#         - PYTHON_REV=3.8.0
+        - PYTHON_REV=3.7.5
+        - PYTHON_REV=3.8.0
 
-language: ruby
-rvm:
-    - 2.6.3
+# language: ruby
+# rvm:
+#     - 2.6.3 
+language: bash
 
 cache:
     apt: true
