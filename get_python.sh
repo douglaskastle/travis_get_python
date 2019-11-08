@@ -24,15 +24,15 @@ else
         cd ${VENV_CACHE}/${machine}
         if [ ${machine} == "Mac" ]; then
             
-            mkdir -p $TRAVIS_BUILD_DIR/local
-            git clone https://github.com/openssl/openssl.git
-            cd openssl
-            ./config \
-                --prefix=$TRAVIS_BUILD_DIR/local/openssl \
-                --openssldir=$TRAVIS_BUILD_DIR/local/openssl > logfile 2>&1
-            make
-            make install > logfile 2>&1
-            #brew update
+#             mkdir -p $TRAVIS_BUILD_DIR/local
+#             git clone https://github.com/openssl/openssl.git
+#             cd openssl
+#             ./config \
+#                 --prefix=$TRAVIS_BUILD_DIR/local/openssl \
+#                 --openssldir=$TRAVIS_BUILD_DIR/local/openssl > logfile 2>&1
+#             make
+#             make install > logfile 2>&1
+            brew update
             #brew upgrade libssl-dev openssl > logfile 2>&1
             #brew unlink openssl && brew link openssl --force
 #             brew uninstall --ignore-dependencies openssl
@@ -50,9 +50,10 @@ else
         tar -zxvf Python-${PYTHON_REV}.tgz > logfile 2>&1
         cd Python-${PYTHON_REV}
         if [ ${machine} == "Mac" ]; then
-            ./configure \
-                --with-ssl \
-                --with-openssl="$TRAVIS_BUILD_DIR/local"    
+#             ./configure \
+#                 --with-ssl \
+#                 --with-openssl="$TRAVIS_BUILD_DIR/local"    
+            ./configure    
             make > logfile 2>&1
             ./python.exe -m venv --copies ${PYTHON_VENV}
         else
