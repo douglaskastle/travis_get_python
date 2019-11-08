@@ -11,7 +11,7 @@ esac
 PYTHON_VENV="${VENV_CACHE}/${machine}/Python-${PYTHON_REV}"
 
 #rm -rf  "${VENV_CACHE}/${machine}"
-rm -rf  "${VENV_CACHE}/Mac"
+#rm -rf  "${VENV_CACHE}/Mac"
 
 mkdir -p "${VENV_CACHE}/${machine}"
 ls "${VENV_CACHE}/${machine}"
@@ -23,43 +23,19 @@ else
    if [ ! -d "${PYTHON_VENV}" ]; then
         cd ${VENV_CACHE}/${machine}
         if [ ${machine} == "Mac" ]; then
-            
-#             mkdir -p $TRAVIS_BUILD_DIR/local
-#             git clone https://github.com/openssl/openssl.git
-#             cd openssl
-#             ./config \
-#                 --prefix=$TRAVIS_BUILD_DIR/local/openssl \
-#                 --openssldir=$TRAVIS_BUILD_DIR/local/openssl > logfile 2>&1
-#             make
-#             make install > logfile 2>&1
-            brew update
-            brew upgrade openssl
-            #brew unlink openssl && brew link openssl --force
-#             brew uninstall --ignore-dependencies openssl
-#             brew install openssl
-#             brew install openssl xz
-#             CPPFLAGS="-I$(brew --prefix openssl)/include" \
-#             LDFLAGS="-L$(brew --prefix openssl)/lib" \
-#             pythonz install ${PYTHON_VENV}
-            #brew uninstall --ignore-dependencies openssl && brew install openssl && CFLAGS="-I$(brew --prefix openssl)/include" LDFLAGS="-L$(brew --prefix openssl)/lib" pyenv install 3.6.2
+            brew update > logfile 2>&1
+            brew upgrade openssl > logfile 2>&1
         else
             sudo apt-get install libssl-dev openssl
         fi
-        
         
         wget https://www.python.org/ftp/python/${PYTHON_REV}/Python-${PYTHON_REV}.tgz
         tar -zxvf Python-${PYTHON_REV}.tgz > logfile 2>&1
         cd Python-${PYTHON_REV}
         if [ ${machine} == "Mac" ]; then
-#             ./configure \
-#                 --with-ssl \
-#                 --with-openssl="$TRAVIS_BUILD_DIR/local"    
-            echo $LDFLAGS
-            echo $CPPFLAGS
-            
             export LDFLAGS="-L/usr/local/opt/openssl/lib"
             export CPPFLAGS="-I/usr/local/opt/openssl/include"
-            ./configure    
+            ./configure > logfile 2>&1
             make > logfile 2>&1
             ./python.exe -m venv --copies ${PYTHON_VENV}
         else
