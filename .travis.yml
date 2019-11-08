@@ -15,10 +15,10 @@ env:
         - PYTHON_REV=3.7.5
         - PYTHON_REV=3.8.0
 
-# language: ruby
-# rvm:
-#     - 2.6.3 
-language: bash
+language: ruby
+rvm:
+    - 2.6.3 
+# language: bash
 
 cache:
     apt: true
