@@ -32,8 +32,8 @@ else
 #                 --openssldir=$TRAVIS_BUILD_DIR/local/openssl > logfile 2>&1
 #             make
 #             make install > logfile 2>&1
-            #brew update
-            #brew upgrade libssl-dev openssl > logfile 2>&1
+            brew update
+            brew upgrade libssl-dev openssl
             #brew unlink openssl && brew link openssl --force
 #             brew uninstall --ignore-dependencies openssl
 #             brew install openssl
@@ -41,7 +41,7 @@ else
 #             CPPFLAGS="-I$(brew --prefix openssl)/include" \
 #             LDFLAGS="-L$(brew --prefix openssl)/lib" \
 #             pythonz install ${PYTHON_VENV}
-            brew uninstall --ignore-dependencies openssl && brew install openssl && CFLAGS="-I$(brew --prefix openssl)/include" LDFLAGS="-L$(brew --prefix openssl)/lib" pyenv install 3.6.2
+            #brew uninstall --ignore-dependencies openssl && brew install openssl && CFLAGS="-I$(brew --prefix openssl)/include" LDFLAGS="-L$(brew --prefix openssl)/lib" pyenv install 3.6.2
         else
             sudo apt-get install libssl-dev openssl
         fi
