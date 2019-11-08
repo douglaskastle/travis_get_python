@@ -16,14 +16,10 @@ jobs:
 env:
     global:
         - VENV_CACHE=$HOME/.cache/venv
-    matrix:
-        - PYTHON_REV=3.6.8
         - PYTHON_REV=3.7.5
-        - PYTHON_REV=3.8.0
-
-# rvm:
-#     - 2.6.3 
-# language: bash
+#     matrix:
+#         - PYTHON_REV=3.6.8
+#         - PYTHON_REV=3.8.0
 
 cache:
     apt: true
