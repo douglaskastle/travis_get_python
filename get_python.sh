@@ -33,7 +33,7 @@ else
 #             make
 #             make install > logfile 2>&1
             brew update
-            brew upgrade libssl-dev openssl
+            brew upgrade openssl
             #brew unlink openssl && brew link openssl --force
 #             brew uninstall --ignore-dependencies openssl
 #             brew install openssl
