@@ -1,23 +1,28 @@
 dist: xenial
 
-os:
-    - linux
-    - osx 
-    - windows
+language: bash
+
+jobs:
+    include
+        - os: linux
+        - os: windows
+        - os: osx
+          rvm: 2.63
+# os:
+#     - linux
+#     - osx 
+#     - windows
 
 env:
     global:
         - VENV_CACHE=$HOME/.cache/venv
     matrix:
-#         - PYTHON_REV=3.4.8
-#         - PYTHON_REV=3.5.7
         - PYTHON_REV=3.6.8
         - PYTHON_REV=3.7.5
         - PYTHON_REV=3.8.0
 
-language: ruby
-rvm:
-    - 2.6.3 
+# rvm:
+#     - 2.6.3 
 # language: bash
 
 cache:
